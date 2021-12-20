@@ -36,6 +36,12 @@ class Game extends React.Component {
     const globalBoard = this.state.boards.map(boards =>
       calculateWinner(boards))
       const winner = calculateWinner(globalBoard)
+      let status;
+      if (winner) {
+        status = 'Winner: ' + winner;
+      } else {
+        status = 'Next player: ' + (this.state.currentPlayer === 'X' ? 'X' : 'O');
+      }
     return (
       <div className="game">
         <div className="game-board">
@@ -53,7 +59,7 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div></div>
-          <ol></ol>
+          <ol>{status}</ol>
         </div>
       </div>
     );
