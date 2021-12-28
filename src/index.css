@@ -1,40 +1,43 @@
 body {
-    font: 14px "Century Gothic", Futura, sans-serif;
-    margin: 20px;
-  }
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
+}
 
-  ol, ul {
-    padding-left: 30px;
-  }
+ol,
+ul {
+  padding-left: 30px;
+}
 
-  .status {
-    margin-bottom: 10px;
-  }
-  .board {
-    display: flex;
-    flex-wrap: wrap;
-    border: 2px solid springgreen;
-  }
-  .square {
-    background: inherit;
-    border: 1px solid #999;
-    float: left;
-    font-size: 24px;
-    font-weight: bold;
-    line-height: 34px;
-    height: 34px;
-    margin-right: -1px;
-    margin-top: -1px;
-    padding: 0;
-    text-align: center;
-    width: 34px;
-  }
-  .game {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  }
+.status {
+  margin-bottom: 10px;
+}
+.board {
+  width: 102px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.square {
+  background: inherit;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+}
+.game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .game-board {
-  border: 3px solid black;
+  width: 306px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

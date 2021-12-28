@@ -10,49 +10,80 @@ class Game extends React.Component {
         return Array(9).fill(null);
       });
     const currentPlayer = "X";
-    const currentBoard = 0;
+    const currentBoardIndex = 0;
 
     this.state = {
       boards: boards,
       currentPlayer: currentPlayer,
-      currentBoard: currentBoard,
+      currentBoardIndex: currentBoardIndex,
     };
   }
 
+  makeComputerMove = () => {
+    const currentBoard = this.state.boards[this.state.currentBoardIndex];
+
+    const emptyPositions = currentBoard
+      .filter((item) => item === null)
+      .map((item, index) => {
+        if (item === null) {
+          return index;
+        }
+      })
+      .filter((item) => {
+        if (item !== undefined) {
+          return true;
+        }
+      });
+
+    const position =
+      emptyPositions[Math.floor(Math.random() * emptyPositions.length)];
+    this.makeMove(position);
+  };
+  componentDidUpdate(prevState, prevProps) {
+    if (
+      this.state.currentPlayer !== prevState.currentPlayer &&
+      this.state.currentPlayer === "O"
+    ) {
+      this.makeComputerMove();
+    }
+  }
   makeMove = (position) => {
     const boards = this.state.boards.slice();
-    const currentBoard = this.state.currentBoard;
+    const currentBoardIndex = this.state.currentBoardIndex;
     const currentPlayer = this.state.currentPlayer;
-    console.log(currentBoard, position);
-    boards[currentBoard][position] = currentPlayer;
+
+    boards[currentBoardIndex][position] = currentPlayer;
     this.setState({
       boards: boards,
-      currentBoard: position,
+      currentBoardIndex: position,
       currentPlayer: currentPlayer === "X" ? "O" : "X",
     });
   };
 
   render() {
-    const globalBoard = this.state.boards.map(boards =>
-      calculateWinner(boards))
-      const winner = calculateWinner(globalBoard)
-      let status;
-      if (winner) {
-        status = 'Winner: ' + winner;
-      } else {
-        status = 'Next player: ' + (this.state.currentPlayer === 'X' ? 'X' : 'O');
-      }
+    const globalBoard = this.state.boards.map((boards) =>
+      calculateWinner(boards)
+    );
+    const winner = calculateWinner(globalBoard);
+    let status;
+
+    if (winner) {
+      status = "Winner: " + winner;
+    } else {
+      status = "Next player: " + (this.state.currentPlayer === "X" ? "X" : "O");
+    }
+
     return (
       <div className="game">
         <div className="game-board">
           {this.state.boards.map((item, index) => {
-            const isCurrentBoard = this.state.currentBoard === index
+            const isCurrentBoard = this.state.currentBoardIndex === index;
             return (
               <Board
                 boardData={item}
                 key={index}
                 onClick={this.makeMove}
-                isCurrentBoard = {isCurrentBoard}
+                isCurrentBoard={isCurrentBoard}
               />
             );
           })}
