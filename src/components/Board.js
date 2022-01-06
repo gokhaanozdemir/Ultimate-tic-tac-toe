@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Square from './Square';
  class Board extends Component {
-
   render() {
     return (
       <div className = "board">
@@ -12,9 +11,10 @@ import Square from './Square';
             onClick={() => this.props.onClick(index) }
             key = {index}
             isDisabled = {!this.props.isCurrentBoard  || !isEmpty }
-          />
-        })}
-      </div>
+        />
+      })}
+     {this.props.status !== null && <span className="big">{this.props.status}</span>}
+        </div>
     )
   }
 }

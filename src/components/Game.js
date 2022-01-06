@@ -61,9 +61,8 @@ class Game extends React.Component {
   };
 
   render() {
-    const globalBoard = this.state.boards.map((boards) =>
-      calculateWinner(boards)
-    );
+    const globalBoard = this.state.boards.map((item) => calculateWinner(item));
+
     const winner = calculateWinner(globalBoard);
     let status;
 
@@ -72,18 +71,21 @@ class Game extends React.Component {
     } else {
       status = "Next player: " + (this.state.currentPlayer === "X" ? "X" : "O");
     }
-
     return (
       <div className="game">
         <div className="game-board">
           {this.state.boards.map((item, index) => {
             const isCurrentBoard = this.state.currentBoardIndex === index;
+            const status = globalBoard[index];
+            const isBoardFull = isCurrentBoard !==null
+            console.log(isBoardFull)
             return (
               <Board
                 boardData={item}
                 key={index}
                 onClick={this.makeMove}
                 isCurrentBoard={isCurrentBoard}
+                status={status}
               />
             );
           })}
