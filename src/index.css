@@ -5,15 +5,13 @@ body {
 
 ol,
 ul {
-  padding-left: 30px;
+  margin-bottom: 30px;
+  padding-left: 60px;
   font-size: 16px;
   font-family: monospace;
   font-style: italic;
 }
 
-.status {
-  margin-bottom: 10px;
-}
 .classX {
   color: blue;
 }
@@ -42,6 +40,7 @@ ul {
   width: 34px;
 }
 .game {
+  margin-top: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,5 +61,14 @@ ul {
   align-items: center;
   font-size: 110px;
   position: absolute;
-  color: black
+  color: aqua;
+}
+.button {
+  width: 120px;
+  height: 30px;
+  margin-left: 60px;
+  border-radius: 10px;
+  border-color: #0e0e1a;
+  background-color: #23d3d3;
+  cursor: pointer;
 }

@@ -18,6 +18,15 @@ class Game extends React.Component {
       currentBoardIndex: currentBoardIndex,
     };
   }
+  handleReset() {
+    this.setState({
+      boards: Array(9)
+        .fill(null)
+        .map((item) => Array(9).fill(null)),
+      currentBoardIndex: 0,
+      currentPlayer: "X",
+    });
+  }
 
   makeComputerMove = () => {
     const currentBoard = this.state.boards[this.state.currentBoardIndex];
@@ -51,15 +60,16 @@ class Game extends React.Component {
     const boards = this.state.boards.slice();
     const currentBoardIndex = this.state.currentBoardIndex;
     const currentPlayer = this.state.currentPlayer;
-
+    const currentBoard = this.state.boards[this.state.currentBoardIndex];
+    const isCurrentBoardFull =
+      currentBoard.filter((item) => item !== null).length === 9;
     boards[currentBoardIndex][position] = currentPlayer;
     this.setState({
       boards: boards,
-      currentBoardIndex: position,
+      currentBoardIndex: isCurrentBoardFull ? null : position,
       currentPlayer: currentPlayer === "X" ? "O" : "X",
     });
   };
-
   render() {
     const globalBoard = this.state.boards.map((item) => calculateWinner(item));
 
@@ -77,8 +87,6 @@ class Game extends React.Component {
           {this.state.boards.map((item, index) => {
             const isCurrentBoard = this.state.currentBoardIndex === index;
             const status = globalBoard[index];
-            const isBoardFull = isCurrentBoard !==null
-            console.log(isBoardFull)
             return (
               <Board
                 boardData={item}
@@ -91,8 +99,8 @@ class Game extends React.Component {
           })}
         </div>
         <div className="game-info">
-          <div></div>
           <ol>{status}</ol>
+          <button className="button" onClick={() => this.handleReset()}>New Game</button>
         </div>
       </div>
     );
