@@ -87,6 +87,7 @@ class Game extends React.Component {
           {this.state.boards.map((item, index) => {
             const isCurrentBoard = this.state.currentBoardIndex === index;
             const status = globalBoard[index];
+
             return (
               <Board
                 boardData={item}
@@ -100,7 +101,9 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <ol>{status}</ol>
-          <button className="button" onClick={() => this.handleReset()}>New Game</button>
+          <button className="button" onClick={() => this.handleReset()}>
+            New Game
+          </button>
         </div>
       </div>
     );

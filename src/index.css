@@ -13,11 +13,11 @@ ul {
 }
 
 .classX {
-  color: blue;
+  color: #dc7d18;
 }
 
 .classO {
-  color: crimson;
+  color: #ff1b78;
 }
 .board {
   width: 102px;
@@ -54,14 +54,21 @@ ul {
   flex-wrap: wrap;
 }
 .big {
-  width: 110px;
-  height: 105px;
+  width: 101px;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 110px;
   position: absolute;
-  color: aqua;
+  color: #f3f1f0;
+  opacity: 0.8;
+  font-family: Arial, sans-serif;
+  background: rgba(400, 54, 54, 0.5);
+  cursor: default;
+}
+.big:hover {
+  opacity: 0;
 }
 .button {
   width: 120px;
@@ -71,4 +78,7 @@ ul {
   border-color: #0e0e1a;
   background-color: #23d3d3;
   cursor: pointer;
+}
+.board-focus {
+  background-color: cornflowerblue;
 }
