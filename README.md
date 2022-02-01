@@ -1,4 +1,4 @@
-***ultimate-tic-tac-toe***
+*****ultimate-tic-tac-toe****
 
 Ultimate tic-tac-toe is a modified version of the well-known tic-tac-toe game. It is played with nine boards arranged in a 3x3 grids. More information and rules can be found here.
 
